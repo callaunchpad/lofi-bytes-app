@@ -38,7 +38,12 @@ export const counterSlice = createSlice({
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
     incrementByAmount: (state, action) => {
+      console.log(action, state);
       state.value += action.payload;
+    },
+
+    multiplyByAmount: (state, action) => {
+      state.value *= action.payload;
     },
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -55,7 +60,7 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement, incrementByAmount, multiplyByAmount } = counterSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
@@ -66,7 +71,7 @@ export const selectCount = (state) => state.counter.value;
 // Here's an example of conditionally dispatching actions based on current state.
 export const incrementIfOdd = (amount) => (dispatch, getState) => {
   const currentValue = selectCount(getState());
-  if (currentValue % 2 === 1) {
+  if (currentValue % 2 === 0) {
     dispatch(incrementByAmount(amount));
   }
 };

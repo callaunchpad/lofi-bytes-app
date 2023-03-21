@@ -18,6 +18,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AppThemeProvider from '@/themes/AppThemeProvider';
 import lofi1 from '@/media/lofi1.gif';
 
+import AudioPlayer from "@/components/AudioPlayer/AudioPlayer";
+import tracks from "@/components/AudioPlayer/tracks";
+
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -79,6 +82,7 @@ export default function Album() {
               spacing={2}
               justifyContent="center"
             >
+              <AudioPlayer track={tracks} />
               <Button variant="contained">Main call to action</Button>
               <Button variant="outlined">Secondary action</Button>
             </Stack>

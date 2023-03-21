@@ -11,6 +11,7 @@ import {
   incrementAsync,
   incrementIfOdd,
   selectCount,
+  multiplyByAmount,
 } from '@/features/counter/counterSlice';
 import styles from './Counter.module.css';
 
@@ -80,7 +81,13 @@ function Counter() {
           variant="contained"
           onClick={() => dispatch(incrementIfOdd(incrementValue))}
         >
-          Add If Odd
+          Add If Even
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => dispatch(multiplyByAmount(incrementValue))}
+        >
+          Multiply Amount
         </Button>
       </div>
     </Box>
