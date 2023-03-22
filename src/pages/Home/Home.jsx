@@ -82,7 +82,7 @@ export default function Album() {
               spacing={2}
               justifyContent="center"
             >
-              <AudioPlayer track={tracks} />
+              <AudioPlayer tracks={tracks} />
               <Button variant="contained">Main call to action</Button>
               <Button variant="outlined">Secondary action</Button>
             </Stack>

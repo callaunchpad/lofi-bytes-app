@@ -1,5 +1,5 @@
-import imgSrc from "../../media/lofi1.gif";
-import imgSrc2 from "../../media/lofi1.gif";
+import imgSrc from "@/media/lofi1.gif";
+import imgSrc2 from "@/media/lofi1.gif";
 import lstm_rain from "./assets/lstm_final.mp3";
 import lstm from "./assets/download.wav";
 
