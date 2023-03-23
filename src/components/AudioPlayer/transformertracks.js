@@ -1,7 +1,7 @@
 import imgSrc from "@/media/lofi3.gif";
 import imgSrc2 from "@/media/lofi1.gif";
-import classical1 from "./assets/model_alicia_400_classical-27.mp3";
-import mario1 from "./assets/model_alicia_400_generated-mario.mp3";
+import classical1 from "./assets/model_alicia_200_classical-27.mp3";
+import mario1 from "./assets/model_alicia_200_generated-mario.mp3";
 import classical2 from "./assets/model_zane_classical.mp3";
 import mario2 from "./assets/model_zane_mario.mp3";
 
