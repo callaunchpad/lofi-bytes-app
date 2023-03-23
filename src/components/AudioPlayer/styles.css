@@ -33,11 +33,12 @@
   
   .audio-player {
     max-width: 350px;
-    padding: 24px;
+    padding: 2em 4em 2em 4em;
     border-radius: 20px;
     box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
-    margin: auto;
+    margin: auto 2vw auto 2vw;
     color: var(--white);
+    background-color: #8e5dde; /* box color */
   }
   
   .artwork {

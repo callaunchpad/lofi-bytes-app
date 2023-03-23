@@ -27,7 +27,7 @@ function Copyright() {
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://launchpad.berkeley.edu/">
-        Lofi Bytes from Launchpad
+        lofi bytes from launchpad
       </Link>{' '}
       {new Date().getFullYear()}.
     </Typography>
@@ -85,13 +85,14 @@ export default function Album() {
             >
               <AudioPlayer tracks={lstmtracks} />
               <AudioPlayer tracks={transformertracks} />
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
+              {/* <Button variant="contained">Main call to action</Button>
+              <Button variant="outlined">Secondary action</Button> */}
             </Stack>
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
+        {/* End hero unit */}
+        {/*<Container sx={{ py: 8 }} maxWidth="md">
+          
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
@@ -120,13 +121,13 @@ export default function Album() {
               </Grid>
             ))}
           </Grid>
-        </Container>
+      </Container> */}
       </main>
 
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
-          Footer
+          &lt;3 &lt;3 &lt;3
         </Typography>
         <Typography
           variant="subtitle1"
