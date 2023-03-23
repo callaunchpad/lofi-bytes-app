@@ -19,7 +19,8 @@ import AppThemeProvider from '@/themes/AppThemeProvider';
 import lofi1 from '@/media/lofi1.gif';
 
 import AudioPlayer from "@/components/AudioPlayer/AudioPlayer";
-import tracks from "@/components/AudioPlayer/tracks";
+import lstmtracks from "@/components/AudioPlayer/lstmtracks";
+import transformertracks from "@/components/AudioPlayer/transformertracks";
 
 function Copyright() {
   return (
@@ -82,7 +83,8 @@ export default function Album() {
               spacing={2}
               justifyContent="center"
             >
-              <AudioPlayer tracks={tracks} />
+              <AudioPlayer tracks={lstmtracks} />
+              <AudioPlayer tracks={transformertracks} />
               <Button variant="contained">Main call to action</Button>
               <Button variant="outlined">Secondary action</Button>
             </Stack>
