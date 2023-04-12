@@ -18,9 +18,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AppThemeProvider from '@/themes/AppThemeProvider';
 import lofi1 from '@/media/lofi1.gif';
 
-import AudioPlayer from "@/components/AudioPlayer/AudioPlayer";
-import lstmtracks from "@/components/AudioPlayer/lstmtracks";
-import transformertracks from "@/components/AudioPlayer/transformertracks";
+import AudioPlayer from '@/components/AudioPlayer/AudioPlayer';
+import lstmtracks from '@/components/AudioPlayer/lstmtracks';
+import transformertracks from '@/components/AudioPlayer/transformertracks';
 
 function Copyright() {
   return (
