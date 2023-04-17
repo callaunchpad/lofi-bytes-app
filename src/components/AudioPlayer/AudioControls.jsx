@@ -7,18 +7,18 @@ import { ReactComponent as Prev } from "./assets/prev.svg";
 const AudioControls = ({
   isPlaying,
   onPlayPauseClick,
-  onPrevClick,
-  onNextClick
+  // onPrevClick,
+  // onNextClick
 }) => (
   <div className="audio-controls">
-    <button
+    {/* <button
       type="button"
       className="prev"
       aria-label="Previous"
       onClick={onPrevClick}
     >
       <Prev />
-    </button>
+    </button> */}
     {isPlaying ? (
       <button
         type="button"
@@ -38,14 +38,14 @@ const AudioControls = ({
         <Play />
       </button>
     )}
-    <button
+    {/* <button
       type="button"
       className="next"
       aria-label="Next"
       onClick={onNextClick}
     >
       <Next />
-    </button>
+    </button> */}
   </div>
 );
 

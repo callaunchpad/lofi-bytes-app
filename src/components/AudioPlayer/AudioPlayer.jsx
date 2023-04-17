@@ -13,7 +13,8 @@ const AudioPlayer = ({ tracks }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   // Destructure for conciseness
-  const { title, artist, color, image, audioSrc } = tracks[trackIndex];
+  //const { title, artist, color, image, audioSrc } = tracks[trackIndex];
+  const { title, audioSrc } = tracks[trackIndex];
 
   // Refs
   const audioRef = useRef(new Audio(audioSrc));
@@ -58,21 +59,21 @@ const AudioPlayer = ({ tracks }) => {
     startTimer();
   };
 
-  const toPrevTrack = () => {
-    if (trackIndex - 1 < 0) {
-      setTrackIndex(tracks.length - 1);
-    } else {
-      setTrackIndex(trackIndex - 1);
-    }
-  };
+  // const toPrevTrack = () => {
+  //   if (trackIndex - 1 < 0) {
+  //     setTrackIndex(tracks.length - 1);
+  //   } else {
+  //     setTrackIndex(trackIndex - 1);
+  //   }
+  // };
 
-  const toNextTrack = () => {
-    if (trackIndex < tracks.length - 1) {
-      setTrackIndex(trackIndex + 1);
-    } else {
-      setTrackIndex(0);
-    }
-  };
+  // const toNextTrack = () => {
+  //   if (trackIndex < tracks.length - 1) {
+  //     setTrackIndex(trackIndex + 1);
+  //   } else {
+  //     setTrackIndex(0);
+  //   }
+  // };
 
   useEffect(() => {
     if (isPlaying) {
@@ -111,17 +112,17 @@ const AudioPlayer = ({ tracks }) => {
   return (
     <div className="audio-player">
       <div className="track-info">
-        <img
+        {/* <img
           className="artwork"
           src={image}
           alt={`track artwork for ${title} by ${artist}`}
-        />
+        /> */}
         <h2 className="title">{title}</h2>
-        <h3 className="artist">{artist}</h3>
+        {/* <h3 className="artist">{artist}</h3> */}
         <AudioControls
           isPlaying={isPlaying}
-          onPrevClick={toPrevTrack}
-          onNextClick={toNextTrack}
+          // onPrevClick={toPrevTrack}
+          // onNextClick={toNextTrack}
           onPlayPauseClick={setIsPlaying}
         />
         <input
@@ -137,6 +138,7 @@ const AudioPlayer = ({ tracks }) => {
           style={{ background: trackStyling }}
         />
       </div>
+    
       
     </div>
   );

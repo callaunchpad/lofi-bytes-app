@@ -18,9 +18,12 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AppThemeProvider from '@/themes/AppThemeProvider';
 import lofi1 from '@/media/lofi1.gif';
 
-import AudioPlayer from '@/components/AudioPlayer/AudioPlayer';
-import lstmtracks from '@/components/AudioPlayer/lstmtracks';
-import transformertracks from '@/components/AudioPlayer/transformertracks';
+import AudioPlayer from "@/components/AudioPlayer/AudioPlayer";
+import lstmtracks from "@/components/AudioPlayer/lstmtracks";
+import transformertracks from "@/components/AudioPlayer/transformertracks";
+import background from "@/media/lofi-bg.gif";
+
+
 
 function Copyright() {
   return (
@@ -54,37 +57,65 @@ export default function Album() {
         {/* Hero unit */}
         <Box
           sx={{
-            bgcolor: 'background.paper',
+            backgroundImage: "url(" + background + ")",
+          backgroundSize: "cover",
+            height: "100vh",
             pt: 8,
             pb: 6,
           }}
         >
           <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              welcome to lofi bytes
-            </Typography>
-            <Typography
-              variant="h5"
-              align="center"
-              color="text.secondary"
-              paragraph
-            >
-              generate your own lofi and game beats!
-            </Typography>
+        
+          {/*<Typography
+            component="h1"
+            variant="h2"
+            align="center"
+            color="text.primary"
+            gutterBottom
+          >
+            welcome to lofi bytes
+          </Typography>
+          <Typography
+            variant="h5"
+            align="center"
+            color="text.secondary"
+            paragraph
+          >
+            generate your own lofi and game beats!
+        </Typography> */}
             <Stack
               sx={{ pt: 4 }}
-              direction="row"
+              direction="column"
               spacing={2}
               justifyContent="center"
             >
-              <AudioPlayer tracks={lstmtracks} />
+              
+              {/* <AudioPlayer tracks={lstmtracks} /> */}
               <AudioPlayer tracks={transformertracks} />
+              {/* <tone-content>
+              <tone-play-toggle>
+
+              <div id="container">
+                <button aria-label="Play">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+                </button>
+              </div>
+              </tone-play-toggle>
+                <div id="FileDrop">
+                  <div id="Text">
+                    Drop a midi file here
+                  </div>
+                  <input type="file" accept="audio/midi" />
+                </div>
+                <div id="Results">
+                  <textarea
+                    id="ResultsText"
+                    placeholder="json output..."
+                  ></textarea>
+                </div>
+                <tone-play-toggle disabled></tone-play-toggle>
+              </tone-content> */}
+              
               {/* <Button variant="contained">Main call to action</Button>
               <Button variant="outlined">Secondary action</Button> */}
             </Stack>
