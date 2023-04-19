@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import AudioControls from "./AudioControls";
+import MidiPlayer from "midi-player-js";
 import "./styles.css";
 
 /*
@@ -7,6 +8,12 @@ import "./styles.css";
  * https://letsbuildui.dev/articles/building-an-audio-player-with-react-hooks
  */
 const AudioPlayer = ({ tracks }) => {
+  // Initialize player and register event handler
+  const player = new MidiPlayer.Player();
+
+  // Load a MIDI file
+  player.loadFile('./assets/test.mid');
+  
   // State
   const [trackIndex, setTrackIndex] = useState(0);
   const [trackProgress, setTrackProgress] = useState(0);
@@ -78,9 +85,11 @@ const AudioPlayer = ({ tracks }) => {
   useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
+      player.play();
       startTimer();
     } else {
       audioRef.current.pause();
+      player.pause();
     }
   }, [isPlaying]);
 
