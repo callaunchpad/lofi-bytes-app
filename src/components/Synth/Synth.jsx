@@ -4,7 +4,7 @@ import AudioControls from "./SynthControls";
 import Rain from "@/media/rain.wav";
 import "./styles.css";
 
-const player = new Tone.Player("rain.wav").toDestination();
+const player = new Tone.Player("https://tonejs.github.io/audio/berklee/gong_1.mp3").toDestination();
 
 const Synth = () => {
   const [play, setPlay] = useState(false);

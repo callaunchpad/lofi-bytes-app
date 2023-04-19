@@ -91,9 +91,9 @@ export default function Album() {
             >
               
               {/* <AudioPlayer tracks={lstmtracks} /> */}
-              <AudioPlayer tracks={transformertracks} />
+              {/* <AudioPlayer tracks={transformertracks} /> */}
               
-              {/*<Synth />*/}
+              <Synth />
               
               {/* <Button variant="contained">Main call to action</Button>
               <Button variant="outlined">Secondary action</Button> */}
