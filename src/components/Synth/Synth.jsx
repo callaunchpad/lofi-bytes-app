@@ -1,22 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import * as Tone from "tone";
-import AudioControls from "./SynthControls";
-import Rain from "@/media/rain.wav";
+import { Midi } from "@tonejs/midi";
+import Rain from "/src/components/Synth/rain.wav";
+import File from "/src/components/Synth/test.mid";
 import "./styles.css";
 
-const player = new Tone.Player("https://tonejs.github.io/audio/berklee/gong_1.mp3").toDestination();
+const player = new Tone.Player(Rain).toDestination();
+player.volume.value = -10;
+const midi = await Midi.fromUrl(File)
 
 const Synth = () => {
   const [play, setPlay] = useState(false);
+  const synth = new Tone.Synth().toDestination();
   
  
     const startMusic = () => {
-            player.start();
-            setPlay(true);
-        
+      player.start();
+      midi.tracks.forEach(track => {
+        new Tone.Part((time, event) => {
+          synth.triggerAttackRelease(
+            event.name,
+            event.duration,
+            time,
+            event.velocity
+          );
+        }, track.notes).start(midi.startTime);
+      });
+      
+      Tone.Transport.start();
+      setPlay(true);
     }
     const muteMusic = () => {
         player.stop();
+        Tone.Transport.pause();
+        Tone.Transport.clear();
         setPlay(false);
     }
 
@@ -24,7 +41,6 @@ const Synth = () => {
     <div>
       <button onClick={play===true ? muteMusic : startMusic}>
         {play ===true ? "stop" : "start"}
-        start
       </button>
     </div>
   );

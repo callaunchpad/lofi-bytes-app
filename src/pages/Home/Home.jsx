@@ -25,6 +25,7 @@ import Synth from "@/components/Synth/Synth.jsx";
 
 
 
+
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
