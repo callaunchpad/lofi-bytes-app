@@ -19,9 +19,10 @@ import AppThemeProvider from '@/themes/AppThemeProvider';
 import lofi1 from '@/media/lofi1.gif';
 
 import AudioPlayer from "@/components/AudioPlayer/AudioPlayer";
-import lstmtracks from "@/components/AudioPlayer/lstmtracks";
 import transformertracks from "@/components/AudioPlayer/transformertracks";
 import background from "@/media/lofi-bg.gif";
+import Synth from "@/components/Synth/Synth.jsx";
+
 
 
 
@@ -37,7 +38,7 @@ function Copyright() {
   );
 }
 
-const cards = [1, 2, 3];
+//const cards = [1, 2, 3];
 
 const theme = createTheme();
 
@@ -91,30 +92,9 @@ export default function Album() {
             >
               
               {/* <AudioPlayer tracks={lstmtracks} /> */}
-              <AudioPlayer tracks={transformertracks} />
-              {/* <tone-content>
-              <tone-play-toggle>
-
-              <div id="container">
-                <button aria-label="Play">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
-                </button>
-              </div>
-              </tone-play-toggle>
-                <div id="FileDrop">
-                  <div id="Text">
-                    Drop a midi file here
-                  </div>
-                  <input type="file" accept="audio/midi" />
-                </div>
-                <div id="Results">
-                  <textarea
-                    id="ResultsText"
-                    placeholder="json output..."
-                  ></textarea>
-                </div>
-                <tone-play-toggle disabled></tone-play-toggle>
-              </tone-content> */}
+              {/* <AudioPlayer tracks={transformertracks} /> */}
+              
+              <Synth />
               
               {/* <Button variant="contained">Main call to action</Button>
               <Button variant="outlined">Secondary action</Button> */}
