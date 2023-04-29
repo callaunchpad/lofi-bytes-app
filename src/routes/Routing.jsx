@@ -1,12 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from '@/pages/Home/Home';
-import Upload from '@/pages/Home/Upload';
+import FileUpload from '@/pages/Home/FileUpload';
 
 function Routing() {
   return (
     <Routes>
-      <Route path="*" element={<Upload />} />
+      <Route path="*" element={<FileUpload />} />
       <Route path="/home/*" element={<Home />} />
     </Routes>
   );
