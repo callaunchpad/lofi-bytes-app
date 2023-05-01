@@ -22,6 +22,7 @@ import AudioPlayer from "@/components/AudioPlayer/AudioPlayer";
 import transformertracks from "@/components/AudioPlayer/transformertracks";
 import background from "@/media/lofi-bg.gif";
 import Synth from "@/components/Synth/Synth.jsx";
+import MidiSynth from "@/components/MidiSynth/MidiSynth.jsx";
 
 
 

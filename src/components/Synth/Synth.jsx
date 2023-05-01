@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import * as Tone from "tone";
 import { Midi } from "@tonejs/midi";
-import Rain from "/src/components/Synth/rain.wav";
-import File from "/src/components/Synth/test.mid";
+import Rain from "/src/assets/rain.wav";
+import File from "/src/assets/test.mid";
 import "./styles.css";
 
 const player = new Tone.Player(Rain).toDestination();
@@ -32,8 +32,8 @@ const Synth = () => {
     }
     const muteMusic = () => {
         player.stop();
-        Tone.Transport.pause();
         Tone.Transport.clear();
+        Tone.Transport.stop();
         setPlay(false);
     }
 

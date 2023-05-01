@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as Tone from "tone";
 import { Midi } from "@tonejs/midi";
-//import File from "/src/components/MidiSynth/test.mid";
+import File from "/src/assets/test.mid";
 
 const midi = await Midi.fromUrl(File)
 
@@ -29,8 +29,8 @@ const MidiSynth = () => {
 
     }
     const muteMusic = () => {
-        Tone.Transport.pause();
         Tone.Transport.clear();
+        Tone.Transport.stop();
         setPlay(false);
         
     }
