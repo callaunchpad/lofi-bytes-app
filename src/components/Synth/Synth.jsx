@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import * as Tone from "tone";
 import { Midi } from "@tonejs/midi";
-import Rain from "/src/assets/rain.wav";
-import File from "/src/assets/test.mid";
+import Rain from "/src/media/rain.wav";
+import File from "/src/media/test.mid";
 import "./styles.css";
 
 const player = new Tone.Player(Rain).toDestination();
