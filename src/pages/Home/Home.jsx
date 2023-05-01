@@ -27,6 +27,7 @@ import MidiSynth from "@/components/MidiSynth/MidiSynth.jsx";
 
 
 
+
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -96,6 +97,7 @@ export default function Album() {
               {/* <AudioPlayer tracks={transformertracks} /> */}
               
               <Synth />
+              
               
               {/* <Button variant="contained">Main call to action</Button>
               <Button variant="outlined">Secondary action</Button> */}
