@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as Tone from "tone";
 import { Midi } from "@tonejs/midi";
-import File from "/src/media/test.mid";
+import File from "/src/media/finetuned.mid";
 
 const midi = await Midi.fromUrl(File)
 

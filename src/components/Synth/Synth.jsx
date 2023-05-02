@@ -4,7 +4,7 @@ import { Midi } from "@tonejs/midi";
 import Rain from "/src/media/rain.wav";
 import Cafe from "/src/media/cafe.mp3";
 import Fire from "/src/media/fire.mp3";
-import File from "/src/media/test.mid";
+import File from "/src/media/finetuned.mid";
 import "./styles.css";
 
 const rainPlayer = new Tone.Player(Rain).toDestination();
@@ -16,6 +16,9 @@ cafePlayer.loop = true;
 firePlayer.loop = true;
 
 const midi = await Midi.fromUrl(File);
+const synths = [];
+
+
 
 const Synth = () => {
   const [play, setPlay] = useState(false);
@@ -26,16 +29,35 @@ const Synth = () => {
   rainPlayer.volume.value = rainVolume;
   cafePlayer.volume.value = cafeVolume;
   firePlayer.volume.value = fireVolume;
-
-  const synth = new Tone.Synth().toDestination();
-
   
-  
+
     const startMusic = () => {
       rainPlayer.start();
       cafePlayer.start();
       firePlayer.start();
       midi.tracks.forEach(track => {
+        // const synth = new Tone.PolySynth(Tone.Synth, {
+        //   envelope: {
+        //     attack: 0.05,
+        //     decay: 0.3,
+        //     sustain: 0.4,
+        //     release: 1.1,
+        //   },
+        // }).toDestination();
+        const synth = new Tone.Sampler({
+          urls: {
+            B4: '/src/components/Synth/assets/piano_B4.wav',
+            D4: '/src/components/Synth/assets/piano_D4.wav',
+            C2: '/src/components/Synth/assets/piano_C2.wav',
+            G2: '/src/components/Synth/assets/piano_G2.wav',
+          },
+        }).toDestination();
+        const filter = new Tone.AutoFilter(4).start();
+        const distortion = new Tone.Distortion(0.5);
+        // connect the player to the filter, distortion and then to the master output
+        synth.chain(filter, distortion, Tone.Destination);
+        synths.push(synth);
+        Tone.Transport.bpm.value = 120;
         new Tone.Part((time, event) => {
           synth.triggerAttackRelease(
             event.name,
@@ -45,8 +67,11 @@ const Synth = () => {
           );
         }, track.notes).start(midi.startTime);
       });
-      
+      Tone.Transport.bpm.value = 40;
       Tone.Transport.start();
+      Tone.Transport.loop = true;
+      Tone.Transport.loopStart = 0;
+      Tone.Transport.loopEnd = 30;
       setPlay(true);
     }
     const muteMusic = () => {
@@ -55,6 +80,10 @@ const Synth = () => {
         firePlayer.stop();
         Tone.Transport.clear();
         Tone.Transport.stop();
+        while (synths.length) {
+          const synth = synths.shift();
+          synth.disconnect();
+        }
         setPlay(false);
     }
 
