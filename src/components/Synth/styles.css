@@ -14,7 +14,7 @@
     transition: background 0.4s ease;
   }
   
-  .button {
+  button {
     background: none;
     border: none;
     cursor: pointer;
@@ -72,24 +72,18 @@
     margin: 0 auto 15px;
   }
   
+  .audio-controls .prev svg,
+  .audio-controls .next svg {
+    width: 35px;
+    height: 35px;
+  }
+  
   .audio-controls .play svg,
   .audio-controls .pause svg {
     height: 40px;
     width: 40px;
   }
-
-  .slider {
-    width: 8px; /* set the height of the slider */
-    background-color: #ccc; /* set the background color of the slider */
-  }
   
-  .slider::-webkit-slider-thumb {
-    height: 20px; /* set the height of the slider thumb */
-    width: 20px; /* set the width of the slider thumb */
-    background-color: #4CAF50; /* set the background color of the slider thumb */
-    cursor: pointer;
-  }
-
   .audio-controls path {
     fill: var(--white);
   }
@@ -105,11 +99,6 @@
     z-index: -1;
   }
   
-  .resize {
-    width: 100px;
-    height: auto;
-  }
-
   .color-backdrop.playing {
     animation: colorChange 20s alternate infinite;
   }
@@ -122,3 +111,4 @@
       filter: hue-rotate(360deg);
     }
   }
+  

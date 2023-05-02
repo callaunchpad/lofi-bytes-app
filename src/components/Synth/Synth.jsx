@@ -20,9 +20,13 @@ rainPlayer.loop = true;
 cafePlayer.loop = true;
 firePlayer.loop = true;
 
-const midi = await Midi.fromUrl(File);
+//const midi = await Midi.fromUrl(File);
 
-const Synth = () => {
+const Synth = (props) => {
+  const File = props.file;
+  const midi = new Midi(File);
+  //parseFile(File);
+
   const [play, setPlay] = useState(false);
   const [rainVolume, setRainVolume] = useState(-100);
   const [cafeVolume, setCafeVolume] = useState(-100);

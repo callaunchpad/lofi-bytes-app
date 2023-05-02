@@ -4,9 +4,25 @@ import { ReactComponent as Pause } from "./assets/pause.svg";
 
 const AudioControls = ({
   isPlaying,
+<<<<<<< HEAD
   onPlayPauseClick
 }) => (
   <div className="audio-controls">
+=======
+  onPlayPauseClick,
+  // onPrevClick,
+  // onNextClick
+}) => (
+  <div className="audio-controls">
+    {/* <button
+      type="button"
+      className="prev"
+      aria-label="Previous"
+      onClick={onPrevClick}
+    >
+      <Prev />
+    </button> */}
+>>>>>>> ad4c7104e191db3cdf977c93f459effceeedb340
     {isPlaying ? (
       <button
         type="button"
@@ -26,6 +42,17 @@ const AudioControls = ({
         <Play />
       </button>
     )}
+<<<<<<< HEAD
+=======
+    {/* <button
+      type="button"
+      className="next"
+      aria-label="Next"
+      onClick={onNextClick}
+    >
+      <Next />
+    </button> */}
+>>>>>>> ad4c7104e191db3cdf977c93f459effceeedb340
   </div>
 );
 
