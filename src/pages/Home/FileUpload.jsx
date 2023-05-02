@@ -10,6 +10,8 @@ export default function Upload() {
   // FileUploader handles file type, so techinically, no error should be thrown.
   //const [error, setError] = React.useState(null);
   const [file, setFile] = React.useState(null);
+  const [generating, setGenerating] = React.useState(false);
+
   const hiddenFileInput = React.useRef(null);
   const handleClick = (event) => {
     hiddenFileInput.current.click();
@@ -24,6 +26,7 @@ export default function Upload() {
     //console.log(formData.entries);
     //console.log(props.file);
     // make a POST request to the File Upload API with the FormData object and Rapid API headers
+    setGenerating(true);
     axios
       .post('http://latte.csua.berkeley.edu:8089/test', formData, {
         headers: {
@@ -40,6 +43,7 @@ export default function Upload() {
         // handle the response
         //console.log(response);
         setFile(response.data);
+        setGenerating(false);
       })
       .catch((error) => {
         // handle errors
@@ -63,7 +67,7 @@ export default function Upload() {
         onChange={handleFileUpload}
         style={{display:'none'}} />
       </Typography>
-      <Synth file={file} />
+      <Synth file={file} generating={generating}/>
     </div>
 
     /*

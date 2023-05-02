@@ -150,13 +150,24 @@ const Synth = (props) => {
         </div>
       </div>
       <div>
+      {props.generating ?
+      <Typography variant="body1" color="text.primary" align="center" style={{ fontSize: '40px'}}>
+        GENERATING...
+      </Typography> 
+        : 
+      <></>
+      }
+      {File!==null ? 
       <Typography variant="body1" color="text.primary" align="center" style={{ fontSize: '60px'}}>
-      <Button variant="contained"
-        style={{ fontSize: '1.3rem'}}
-        onClick={play===true ? muteMusic : startMusic}>
-        {play===true ? "stop" : "start"}
-      </Button>
-      </Typography>
+        <Button variant="contained"
+          style={{ fontSize: '1.3rem'}}
+          onClick={play===true ? muteMusic : startMusic}>
+          {play===true ? "stop" : "start"}
+        </Button>
+      </Typography> 
+        : 
+      <></>}
+      
     </div>
     </main>
   );
