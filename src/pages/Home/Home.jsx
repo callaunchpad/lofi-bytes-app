@@ -19,8 +19,14 @@ import AppThemeProvider from '@/themes/AppThemeProvider';
 import lofi1 from '@/media/lofi1.gif';
 
 import AudioPlayer from "@/components/AudioPlayer/AudioPlayer";
-import lstmtracks from "@/components/AudioPlayer/lstmtracks";
 import transformertracks from "@/components/AudioPlayer/transformertracks";
+import background from "@/media/lofi-bg.gif";
+import Synth from "@/components/Synth/Synth.jsx";
+import MidiSynth from "@/components/MidiSynth/MidiSynth.jsx";
+
+
+
+
 
 function Copyright() {
   return (
@@ -34,7 +40,7 @@ function Copyright() {
   );
 }
 
-const cards = [1, 2, 3];
+//const cards = [1, 2, 3];
 
 const theme = createTheme();
 
@@ -54,37 +60,45 @@ export default function Album() {
         {/* Hero unit */}
         <Box
           sx={{
-            bgcolor: 'background.paper',
+            backgroundImage: "url(" + background + ")",
+          backgroundSize: "cover",
+            height: "100vh",
             pt: 8,
             pb: 6,
           }}
         >
           <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              welcome to lofi bytes
-            </Typography>
-            <Typography
-              variant="h5"
-              align="center"
-              color="text.secondary"
-              paragraph
-            >
-              generate your own lofi and game beats!
-            </Typography>
+        
+          {/*<Typography
+            component="h1"
+            variant="h2"
+            align="center"
+            color="text.primary"
+            gutterBottom
+          >
+            welcome to lofi bytes
+          </Typography>
+          <Typography
+            variant="h5"
+            align="center"
+            color="text.secondary"
+            paragraph
+          >
+            generate your own lofi and game beats!
+        </Typography> */}
             <Stack
               sx={{ pt: 4 }}
-              direction="row"
+              direction="column"
               spacing={2}
               justifyContent="center"
             >
-              <AudioPlayer tracks={lstmtracks} />
-              <AudioPlayer tracks={transformertracks} />
+              
+              {/* <AudioPlayer tracks={lstmtracks} /> */}
+              {/* <AudioPlayer tracks={transformertracks} /> */}
+              
+              <Synth />
+              
+              
               {/* <Button variant="contained">Main call to action</Button>
               <Button variant="outlined">Secondary action</Button> */}
             </Stack>

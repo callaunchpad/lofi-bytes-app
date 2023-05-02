@@ -40,6 +40,7 @@ function AppThemeProvider({ children }) {
         fontFamily: font,
         body1: {
           fontFamily: font,
+          fontSize: "2rem",
         }
       },
     }),
