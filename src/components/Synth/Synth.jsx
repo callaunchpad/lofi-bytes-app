@@ -116,7 +116,7 @@ const Synth = (props) => {
         </div>
         <Slider
           type="range"
-          min={-30}
+          min={-50}
           max={20}
           step={0.2}
           value={drumVolume}
@@ -132,7 +132,7 @@ const Synth = (props) => {
         </div>
         <Slider
           type="range"
-          min={-10}
+          min={-20}
           max={15}
           step={0.2}
           value={rainVolume}
