@@ -18,15 +18,12 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AppThemeProvider from '@/themes/AppThemeProvider';
 import lofi1 from '@/media/lofi1.gif';
 
-import AudioPlayer from "@/components/AudioPlayer/AudioPlayer";
-import transformertracks from "@/components/AudioPlayer/transformertracks";
-import background from "@/media/lofi-bg.gif";
-import Synth from "@/components/Synth/Synth.jsx";
-import MidiSynth from "@/components/MidiSynth/MidiSynth.jsx";
-
-
-
-
+import AudioPlayer from '@/components/AudioPlayer/AudioPlayer';
+import transformertracks from '@/components/AudioPlayer/transformertracks';
+import background from '@/media/lofi-bg.gif';
+import Synth from '@/components/Synth/Synth.jsx';
+import MidiSynth from '@/components/MidiSynth/MidiSynth.jsx';
+import FileUpload from '@/pages/Home/FileUpload.jsx';
 
 function Copyright() {
   return (
@@ -60,16 +57,15 @@ export default function Album() {
         {/* Hero unit */}
         <Box
           sx={{
-            backgroundImage: "url(" + background + ")",
-          backgroundSize: "cover",
-            height: "100vh",
+            backgroundImage: 'url(' + background + ')',
+            backgroundSize: 'cover',
+            height: '100vh',
             pt: 8,
             pb: 6,
           }}
         >
           <Container maxWidth="sm">
-        
-          {/*<Typography
+            {/*<Typography
             component="h1"
             variant="h2"
             align="center"
@@ -92,13 +88,11 @@ export default function Album() {
               spacing={2}
               justifyContent="center"
             >
-              
               {/* <AudioPlayer tracks={lstmtracks} /> */}
               {/* <AudioPlayer tracks={transformertracks} /> */}
-              
-              <Synth />
-              
-              
+
+              <FileUpload />
+
               {/* <Button variant="contained">Main call to action</Button>
               <Button variant="outlined">Secondary action</Button> */}
             </Stack>

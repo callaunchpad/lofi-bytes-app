@@ -4,7 +4,12 @@ import { Midi } from "@tonejs/midi";
 import Rain from "/src/media/rain.wav";
 import Cafe from "/src/media/cafe.mp3";
 import Fire from "/src/media/fire.mp3";
+import ThunderstormTwoToneIcon from '@mui/icons-material/ThunderstormTwoTone';
+import LocalCafeTwoToneIcon from '@mui/icons-material/LocalCafeTwoTone';
+import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartmentTwoTone';
 import File from "/src/media/finetuned.mid";
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import "./styles.css";
 
 const rainPlayer = new Tone.Player(Rain).toDestination();
@@ -15,12 +20,13 @@ rainPlayer.loop = true;
 cafePlayer.loop = true;
 firePlayer.loop = true;
 
-const midi = await Midi.fromUrl(File);
-const synths = [];
+//const midi = await Midi.fromUrl(File);
 
+const Synth = (props) => {
+  const File = props.file;
+  const midi = new Midi(File);
+  //parseFile(File);
 
-
-const Synth = () => {
   const [play, setPlay] = useState(false);
   const [rainVolume, setRainVolume] = useState(-100);
   const [cafeVolume, setCafeVolume] = useState(-100);
@@ -89,37 +95,40 @@ const Synth = () => {
 
   return (
     <main>
-      <section>
-        <p>rain</p>
+      <div className="rain">
         <input
           type="range"
-          min={-20}
-          max={10}
+          min={-10}
+          max={20}
           step={0.2}
           value={rainVolume}
           onChange={event => {
             setRainVolume(event.target.valueAsNumber)
           }}
         />
-      </section>
-      <section>
-        <p>cafe</p>
+        <div className="rainIcon">
+          <ThunderstormTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
+        </div>
+      </div>
+      <div className="cafe">
         <input
           type="range"
-          min={-20}
-          max={20}
+          min={0}
+          max={30}
           step={0.2}
           value={cafeVolume}
           onChange={event => {
             setCafeVolume(event.target.valueAsNumber)
           }}
         />
-      </section>
-      <section>
-        <p>fire</p>
+        <div className="cafeIcon">
+          <LocalCafeTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
+        </div>
+      </div>
+      <div className="fire">
         <input
           type="range"
-          min={-20}
+          min={-10}
           max={20}
           step={0.2}
           value={fireVolume}
@@ -127,15 +136,21 @@ const Synth = () => {
             setFireVolume(event.target.valueAsNumber)
           }}
         />
-      </section>
+        <div className="fireIcon">
+          <LocalFireDepartmentTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
+        </div>
+      </div>
       <div>
-      <button onClick={play===true ? muteMusic : startMusic}>
-        {play ===true ? "stop" : "start"}
-      </button>
+      <Typography variant="body1" color="text.primary" align="center" style={{ fontSize: '60px'}}>
+      <Button variant="contained"
+      style={{ fontSize: '1.3rem'}}
+        onClick={play===true ? muteMusic : startMusic}>
+        {play===true ? "stop" : "start"}
+      </Button>
+      </Typography>
     </div>
     </main>
   );
-
 
 }
 
