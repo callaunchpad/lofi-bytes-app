@@ -59,7 +59,7 @@ export default function Upload() {
       <Button variant="contained"
         style={{ fontSize: '1.3rem'}}
         onClick={handleClick}>
-          upload a file
+          upload .mid file
       </Button>
       <input 
         type="file" 
