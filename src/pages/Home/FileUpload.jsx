@@ -7,21 +7,25 @@ export default function Upload(props) {
   // FileUploader handles file type, so techinically, no error should be thrown.
   const [error, setError] = React.useState(null);
   const handleFileUpload = (event) => {
-    props.setFile;
+    //props.setFile;
     // get the selected file from the input
     //const file = event.target.files[0];
     // create a new FormData object and append the file to it
     const formData = new FormData();
-    formData.append('file', props.file);
+    formData.append('file', '3414151');
+    //console.log(props.file);
     // make a POST request to the File Upload API with the FormData object and Rapid API headers
     axios
-      .post(
-        'http://latte.csua.berkeley.edu:8089/test',
-
-        {
-          file: props.file,
+      .post('http://latte.csua.berkeley.edu:8089/test', formData, {
+        headers: {
+          //'Access-Control-Allow-Methods': 'POST',
+          //'Content-Disposition': 'inline; filename=output.mid',
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'multipart/form-data',
+          //"x-rapidapi-host": "file-upload8.p.rapidapi.com",
+          //"x-rapidapi-key": "your-rapidapi-key-here",
         },
-      )
+      })
       .then((response) => {
         // handle the response
         console.log(response);
