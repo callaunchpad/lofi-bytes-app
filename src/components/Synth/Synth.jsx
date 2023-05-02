@@ -4,6 +4,7 @@ import { Midi } from "@tonejs/midi";
 import Rain from "/src/media/rain.wav";
 import Cafe from "/src/media/cafe.mp3";
 import Fire from "/src/media/fire.mp3";
+import Drum from "/src/media/drum.wav";
 import ThunderstormTwoToneIcon from '@mui/icons-material/ThunderstormTwoTone';
 import LocalCafeTwoToneIcon from '@mui/icons-material/LocalCafeTwoTone';
 import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartmentTwoTone';
@@ -15,17 +16,19 @@ import "./styles.css";
 const rainPlayer = new Tone.Player(Rain).toDestination();
 const cafePlayer = new Tone.Player(Cafe).toDestination();
 const firePlayer = new Tone.Player(Fire).toDestination();
+const drumPlayer = new Tone.Player(Drum).toDestination();
 
 rainPlayer.loop = true;
 cafePlayer.loop = true;
 firePlayer.loop = true;
+drumPlayer.loop = true;
 
-//const midi = await Midi.fromUrl(File);
+const midi = await Midi.fromUrl(File);
 
 const Synth = (props) => {
-  const File = props.file;
-  const midi = new Midi(File);
-  //parseFile(File);
+  //const File = props.file;
+  //const midi = new Midi(File);
+  const synths = [];
 
   const [play, setPlay] = useState(false);
   const [rainVolume, setRainVolume] = useState(-100);
@@ -35,9 +38,11 @@ const Synth = (props) => {
   rainPlayer.volume.value = rainVolume;
   cafePlayer.volume.value = cafeVolume;
   firePlayer.volume.value = fireVolume;
+  drumPlayer.volume.value = -15;
   
 
     const startMusic = () => {
+      drumPlayer.start();
       rainPlayer.start();
       cafePlayer.start();
       firePlayer.start();
@@ -46,28 +51,30 @@ const Synth = (props) => {
         //   envelope: {
         //     attack: 0.05,
         //     decay: 0.3,
-        //     sustain: 0.4,
-        //     release: 1.1,
+        //     sustain: 0.5,
+        //     release: 1,
         //   },
         // }).toDestination();
         const synth = new Tone.Sampler({
           urls: {
-            B4: '/src/components/Synth/assets/piano_B4.wav',
-            D4: '/src/components/Synth/assets/piano_D4.wav',
-            C2: '/src/components/Synth/assets/piano_C2.wav',
-            G2: '/src/components/Synth/assets/piano_G2.wav',
+            A2: '/src/components/Synth/assets/client_assets_samples_instruments_piano-soft_A2.mp3',
+            A5: '/src/components/Synth/assets/client_assets_samples_instruments_piano-soft_A5.mp3',
+            C4: '/src/components/Synth/assets/client_assets_samples_instruments_piano-soft_C4.mp3',
+            C7: '/src/components/Synth/assets/client_assets_samples_instruments_piano-soft_C7.mp3',
           },
         }).toDestination();
         const filter = new Tone.AutoFilter(4).start();
-        const distortion = new Tone.Distortion(0.5);
+        const reverb = new Tone.Reverb(1);
+        //const distortion = new Tone.Distortion(0.5);
         // connect the player to the filter, distortion and then to the master output
-        synth.chain(filter, distortion, Tone.Destination);
+        synth.chain(filter, reverb, Tone.Destination);
+        synth.volume.value = 10;
         synths.push(synth);
         Tone.Transport.bpm.value = 120;
         new Tone.Part((time, event) => {
           synth.triggerAttackRelease(
             event.name,
-            event.duration,
+            event.duration + 0.75,
             time,
             event.velocity
           );
@@ -81,7 +88,8 @@ const Synth = (props) => {
       setPlay(true);
     }
     const muteMusic = () => {
-      rainPlayer.stop();
+        drumPlayer.stop();
+        rainPlayer.stop();
         cafePlayer.stop();
         firePlayer.stop();
         Tone.Transport.clear();
@@ -99,7 +107,7 @@ const Synth = (props) => {
         <input
           type="range"
           min={-10}
-          max={20}
+          max={15}
           step={0.2}
           value={rainVolume}
           onChange={event => {
