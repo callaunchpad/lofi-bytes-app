@@ -35,11 +35,12 @@ const Synth = (props) => {
   const [rainVolume, setRainVolume] = useState(-100);
   const [cafeVolume, setCafeVolume] = useState(-100);
   const [fireVolume, setFireVolume] = useState(-100);
+  const [drumVolume, setDrumVolume] = useState(-100);
 
   rainPlayer.volume.value = rainVolume;
   cafePlayer.volume.value = cafeVolume;
   firePlayer.volume.value = fireVolume;
-  drumPlayer.volume.value = -15;
+  drumPlayer.volume.value = drumVolume;
   
 
     const startMusic = () => {
@@ -104,6 +105,21 @@ const Synth = (props) => {
 
   return (
     <main>
+      <div className="drum">
+        <input
+          type="range"
+          min={-30}
+          max={20}
+          step={0.2}
+          value={drumVolume}
+          onChange={event => {
+            setDrumVolume(event.target.valueAsNumber)
+          }}
+        />
+        <div className="rainIcon">
+          <ThunderstormTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
+        </div>
+      </div>
       <div className="rain">
         <input
           type="range"
