@@ -1,13 +1,19 @@
 import React from 'react';
 import axios from 'axios';
+import Button from '@mui/material/Button';
 import { FileUploader } from 'react-drag-drop-files';
 import Synth from '@/components/Synth/Synth.jsx';
+import Typography from '@mui/material/Typography';
 const fileTypes = ['MID'];
 
 export default function Upload() {
   // FileUploader handles file type, so techinically, no error should be thrown.
   //const [error, setError] = React.useState(null);
   const [file, setFile] = React.useState(null);
+  const hiddenFileInput = React.useRef(null);
+  const handleClick = (event) => {
+    hiddenFileInput.current.click();
+  };
   const handleFileUpload = (event) => {
     //props.setFile;
     // get the selected file from the input
@@ -45,7 +51,18 @@ export default function Upload() {
   };
   return (
     <div>
-      <input type="file" onChange={handleFileUpload} />
+      <Typography variant="body1" color="text.primary" align="center" style={{ fontSize: '20px'}}>
+      <Button variant="contained"
+        style={{ fontSize: '1.3rem'}}
+        onClick={handleClick}>
+          upload a file
+      </Button>
+      <input 
+        type="file" 
+        ref={hiddenFileInput}
+        onChange={handleFileUpload}
+        style={{display:'none'}} />
+      </Typography>
       <Synth file={file} />
     </div>
 
