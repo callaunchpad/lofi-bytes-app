@@ -25,6 +25,7 @@ firePlayer.loop = true;
 const Synth = (props) => {
   const File = props.file;
   const midi = new Midi(File);
+  const synths = [];
   //parseFile(File);
 
   const [play, setPlay] = useState(false);
@@ -143,7 +144,7 @@ const Synth = (props) => {
       <div>
       <Typography variant="body1" color="text.primary" align="center" style={{ fontSize: '60px'}}>
       <Button variant="contained"
-      style={{ fontSize: '1.3rem'}}
+        style={{ fontSize: '1.3rem'}}
         onClick={play===true ? muteMusic : startMusic}>
         {play===true ? "stop" : "start"}
       </Button>
