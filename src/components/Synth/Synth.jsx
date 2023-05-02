@@ -175,7 +175,7 @@ const Synth = (props) => {
       <></>
       }
       {File!==null ? 
-      <Typography variant="body1" color="text.primary" align="center" style={{ fontSize: '60px'}}>
+      <Typography variant="body1" color="text.primary" align="center" style={{ fontSize: '40px'}}>
         <Button variant="contained"
           style={{ fontSize: '1.3rem'}}
           onClick={play===true ? muteMusic : startMusic}>

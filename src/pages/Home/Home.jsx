@@ -28,7 +28,7 @@ import FileUpload from '@/pages/Home/FileUpload.jsx';
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
+      {'copyright © '}
       <Link color="inherit" href="https://launchpad.berkeley.edu/">
         lofi bytes from launchpad
       </Link>{' '}
@@ -46,12 +46,10 @@ export default function Album() {
     <AppThemeProvider>
       <CssBaseline />
       <AppBar position="relative">
-        <Toolbar>
-          <HeadphonesIcon sx={{ mr: 2 }} />
-          <Typography variant="h6" color="inherit" noWrap>
-            lofi bytes
+          <Typography variant="h5" padding="10px" align="center" color="inherit" noWrap>
+            welcome to lofi bytes...
+            use ai to generate your own lofi and game beats!
           </Typography>
-        </Toolbar>
       </AppBar>
       <main>
         {/* Hero unit */}
@@ -65,23 +63,12 @@ export default function Album() {
           }}
         >
           <Container maxWidth="sm">
-            {/*<Typography
-            component="h1"
-            variant="h2"
-            align="center"
-            color="text.primary"
-            gutterBottom
-          >
-            welcome to lofi bytes
-          </Typography>
-          <Typography
-            variant="h5"
-            align="center"
-            color="text.secondary"
-            paragraph
-          >
+            {/* <Typography component="h5" variant="h5" align="center" color="white" gutterBottom>
+              use ai to generate your own lofi and game beats!
+            </Typography> */}
+          {/* <Typography variant="h5" align="center" color="text.secondary" paragraph>
             generate your own lofi and game beats!
-        </Typography> */}
+            </Typography> */}
             <Stack
               sx={{ pt: 4 }}
               direction="column"
@@ -143,7 +130,7 @@ export default function Album() {
           color="text.secondary"
           component="p"
         >
-          Hope you enjoy our site!
+          hope you enjoy our site!
         </Typography>
         <Copyright />
       </Box>
