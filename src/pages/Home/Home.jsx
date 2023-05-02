@@ -47,6 +47,7 @@ export default function Album() {
       <CssBaseline />
       <AppBar position="relative">
       <Toolbar>
+        <HeadphonesIcon/>
           {/* <Typography variant="h6" color="inherit" noWrap>
             lofi bytes
           </Typography>
