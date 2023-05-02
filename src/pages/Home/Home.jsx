@@ -44,7 +44,6 @@ const theme = createTheme();
 export default function Album() {
   return (
     <AppThemeProvider>
-      <FileUpload />
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
@@ -92,7 +91,7 @@ export default function Album() {
               {/* <AudioPlayer tracks={lstmtracks} /> */}
               {/* <AudioPlayer tracks={transformertracks} /> */}
 
-              <Synth />
+              <FileUpload />
 
               {/* <Button variant="contained">Main call to action</Button>
               <Button variant="outlined">Secondary action</Button> */}
