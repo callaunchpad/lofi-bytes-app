@@ -8,6 +8,7 @@ import Drum from "/src/media/drum.wav";
 import ThunderstormTwoToneIcon from '@mui/icons-material/ThunderstormTwoTone';
 import LocalCafeTwoToneIcon from '@mui/icons-material/LocalCafeTwoTone';
 import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartmentTwoTone';
+import GraphicEqTwoToneIcon from '@mui/icons-material/GraphicEqTwoTone';
 import File from "/src/media/finetuned.mid";
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -116,8 +117,8 @@ const Synth = (props) => {
             setDrumVolume(event.target.valueAsNumber)
           }}
         />
-        <div className="rainIcon">
-          <ThunderstormTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
+        <div className="drumIcon">
+          <GraphicEqTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
         </div>
       </div>
       <div className="rain">
@@ -167,7 +168,7 @@ const Synth = (props) => {
       </div>
       <div>
       {props.generating ?
-      <Typography variant="body1" color="text.primary" align="center" style={{ fontSize: '40px'}}>
+      <Typography variant="body1" color="white" align="center" style={{ fontSize: '40px'}}>
         GENERATING...
       </Typography> 
         : 
