@@ -12,6 +12,9 @@ import GraphicEqTwoToneIcon from '@mui/icons-material/GraphicEqTwoTone';
 import File from "/src/media/finetuned.mid";
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+
 import "./styles.css";
 
 const rainPlayer = new Tone.Player(Rain).toDestination();
@@ -106,7 +109,10 @@ const Synth = (props) => {
 
   return (
     <main>
-      <div className="drum">
+      <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center" className="drum">
+        <div className="drumIcon">
+          <GraphicEqTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
+        </div>
         <input
           type="range"
           min={-30}
@@ -117,11 +123,11 @@ const Synth = (props) => {
             setDrumVolume(event.target.valueAsNumber)
           }}
         />
-        <div className="drumIcon">
-          <GraphicEqTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
+      </Stack>
+      <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center" className="rain">
+        <div className="rainIcon">
+          <ThunderstormTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
         </div>
-      </div>
-      <div className="rain">
         <input
           type="range"
           min={-10}
@@ -132,11 +138,11 @@ const Synth = (props) => {
             setRainVolume(event.target.valueAsNumber)
           }}
         />
-        <div className="rainIcon">
-          <ThunderstormTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
+      </Stack>
+      <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center" className="cafe">
+        <div className="cafeIcon">
+          <LocalCafeTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
         </div>
-      </div>
-      <div className="cafe">
         <input
           type="range"
           min={0}
@@ -147,11 +153,11 @@ const Synth = (props) => {
             setCafeVolume(event.target.valueAsNumber)
           }}
         />
-        <div className="cafeIcon">
-          <LocalCafeTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
+      </Stack>
+      <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center" className="fire">
+        <div className="fireIcon">
+          <LocalFireDepartmentTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
         </div>
-      </div>
-      <div className="fire">
         <input
           type="range"
           min={-10}
@@ -162,10 +168,7 @@ const Synth = (props) => {
             setFireVolume(event.target.valueAsNumber)
           }}
         />
-        <div className="fireIcon">
-          <LocalFireDepartmentTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
-        </div>
-      </div>
+      </Stack>
       <div>
       {props.generating ?
       <Typography variant="body1" color="white" align="center" style={{ fontSize: '40px'}}>
