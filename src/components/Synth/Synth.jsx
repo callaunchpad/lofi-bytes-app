@@ -11,6 +11,7 @@ import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartm
 import GraphicEqTwoToneIcon from '@mui/icons-material/GraphicEqTwoTone';
 import File from "/src/media/finetuned.mid";
 import Button from '@mui/material/Button';
+import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
@@ -113,60 +114,63 @@ const Synth = (props) => {
         <div className="drumIcon">
           <GraphicEqTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
         </div>
-        <input
+        <Slider
           type="range"
           min={-30}
           max={20}
           step={0.2}
           value={drumVolume}
-          onChange={event => {
-            setDrumVolume(event.target.valueAsNumber)
+          onChange={(event, newValue) => {
+            setDrumVolume(newValue)
           }}
+          color="secondary"
         />
       </Stack>
       <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center" className="rain">
         <div className="rainIcon">
           <ThunderstormTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
         </div>
-        <input
+        <Slider
           type="range"
           min={-10}
           max={15}
           step={0.2}
           value={rainVolume}
-          onChange={event => {
-            setRainVolume(event.target.valueAsNumber)
+          onChange={(event, newValue) => {
+            setRainVolume(newValue)
           }}
+          color="secondary"
         />
       </Stack>
       <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center" className="cafe">
         <div className="cafeIcon">
           <LocalCafeTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
         </div>
-        <input
-          type="range"
+        <Slider
           min={0}
           max={30}
           step={0.2}
           value={cafeVolume}
-          onChange={event => {
-            setCafeVolume(event.target.valueAsNumber)
+          onChange={(event, newValue) => {
+            setCafeVolume(newValue)
           }}
+          color="secondary"
         />
       </Stack>
       <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center" className="fire">
         <div className="fireIcon">
           <LocalFireDepartmentTwoToneIcon sx={{ color: "white", padding: "10px", backgroundColor: "#8e5dde", fontSize: "50px", borderRadius: "10px", }}/>
         </div>
-        <input
+        <Slider
           type="range"
           min={-10}
           max={20}
           step={0.2}
           value={fireVolume}
-          onChange={event => {
-            setFireVolume(event.target.valueAsNumber)
+          onChange={(event, newValue) => {
+            setFireVolume(newValue)
           }}
+          color="secondary"
         />
       </Stack>
       <div>

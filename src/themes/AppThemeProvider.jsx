@@ -21,7 +21,7 @@ function AppThemeProvider({ children }) {
           dark: '#342260',
         },
         secondary: {
-          main: '#e150e6',
+          main: '#441478',
         },
         background: {
           default: '#b893d0',
@@ -33,7 +33,7 @@ function AppThemeProvider({ children }) {
       text: {
         primary: mode === 'dark' ? '#FCFBFA' : '#5C5C5C',
         disabled: '#C3C1BD',
-        secondary: '#999999',
+        secondary: '#441478',
       },
 
       typography: {

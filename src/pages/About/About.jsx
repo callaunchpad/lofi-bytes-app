@@ -47,10 +47,10 @@ export default function Album() {
       <CssBaseline />
       <AppBar position="relative">
       <Toolbar>
-          {/* <Typography variant="h6" color="inherit" noWrap>
+          {/* <Typography variant="h6" color="inherit" sx={{ flexGrow: 1 }}>
             lofi bytes
-          </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          </Typography> */}
+          {/* <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
           <Typography variant="h6" color="inherit" noWrap>
           <Link href="/about" underline="none" color="inherit">about</Link>
           </Typography>
@@ -69,11 +69,11 @@ export default function Album() {
           }}
         >
           <Container maxWidth="sm">
-            <Typography component="h3" variant="h3" align="center" color="text.primary" gutterBottom>
+            <Typography component="h2" variant="h2" align="center" color="text.primary" gutterBottom>
               Welcome to lofi bytes!
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              generate your own lofi and game beats using musictransformer and tone.js
+              use ai to generate your own lofi and game beats
             </Typography>
             <Stack
               sx={{ pt: 4 }}
