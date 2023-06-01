@@ -1,29 +1,19 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
 import HeadphonesIcon from '@mui/icons-material/Headphones';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
 import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AppThemeProvider from '@/themes/AppThemeProvider';
-import lofi1 from '@/media/lofi1.gif';
-
-import AudioPlayer from '@/components/AudioPlayer/AudioPlayer';
-import transformertracks from '@/components/AudioPlayer/transformertracks';
+import teamPic from '@/media/lofi-bytes.png';
 import background from '@/media/lofi-bg.gif';
-import Synth from '@/components/Synth/Synth.jsx';
-import MidiSynth from '@/components/MidiSynth/MidiSynth.jsx';
-import FileUpload from '@/pages/Home/FileUpload.jsx';
 
 function Copyright() {
   return (
@@ -37,8 +27,6 @@ function Copyright() {
   );
 }
 
-//const cards = [1, 2, 3];
-
 const theme = createTheme();
 
 export default function Album() {
@@ -46,15 +34,30 @@ export default function Album() {
     <AppThemeProvider>
       <CssBaseline />
       <AppBar position="relative">
-      <Toolbar>
-          {/* <Typography variant="h6" color="inherit" sx={{ flexGrow: 1 }}>
-            lofi bytes
-          </Typography> */}
-          {/* <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-          <Typography variant="h6" color="inherit" noWrap>
-          <Link href="/about" underline="none" color="inherit">about</Link>
-          </Typography>
-          </Box> */}
+        <Toolbar>
+          <HeadphonesIcon />
+          <Box
+            style={{ marginLeft: 16 }}
+            sx={{ display: { xs: 'none', sm: 'block' } }}
+          >
+            <Typography variant="h6" color="inherit" noWrap>
+              <Link href="/" underline="none" color="inherit">
+                home
+              </Link>
+            </Typography>
+          </Box>
+          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+            <Typography
+              style={{ marginLeft: 16 }}
+              variant="h6"
+              color="inherit"
+              noWrap
+            >
+              <Link href="/about" underline="none" color="inherit">
+                about
+              </Link>
+            </Typography>
+          </Box>
         </Toolbar>
       </AppBar>
       <main>
@@ -63,66 +66,99 @@ export default function Album() {
           sx={{
             backgroundImage: 'url(' + background + ')',
             backgroundSize: 'cover',
-            height: '100vh',
+            // height: '100vh',
             pt: 8,
             pb: 6,
           }}
+          alignItems="center"
+          justifyContent="center"
         >
-          <Container maxWidth="sm">
-            <Typography component="h2" variant="h2" align="center" color="text.primary" gutterBottom>
-              Welcome to lofi bytes!
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              use ai to generate your own lofi and game beats
-            </Typography>
-            <Stack
-              sx={{ pt: 4 }}
-              direction="column"
-              spacing={2}
-              justifyContent="center"
+          <Stack
+            sx={{  }}
+            direction="row"
+            justifyContent="center"
+          >
+            <Box
+              maxWidth="md"
+              bgcolor="rgba(255, 255, 255, 0.5)"
+              sx={{ borderRadius: 3, p: 5, m: 5 }}
             >
-              {/* <AudioPlayer tracks={lstmtracks} /> */}
-              {/* <AudioPlayer tracks={transformertracks} /> */}
+              <Typography
+                component="h4"
+                variant="h4"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                about our project
+              </Typography>
+              <Typography
+                variant="h5"
+                align="center"
+                color="text.secondary"
+                paragraph
+              >
+                Always looking for your own, custom generated lofi beats? Well, we've been in your shoes.
+                <br/>
+                <br/>
+                Our main goal was to create a web app where users can generate their own lofi and game beats to study/chill to.
+                For this project, we scraped lofi data from YouTube, converted them into MIDI using a CNN-based model called basic-pitch by Spotify, and then
+                trained the MusicTransformer model based on architecture from Google AI.
+                <br/>
+                Additionally, we built this website using React, synthesized our MIDI files using tone.js, and deployed our model API with Flask. 
+                All in all, this was a unique learning experience for all of us, and we welcome you to check out our repo!
 
-              <FileUpload />
-
-              {/* <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button> */}
-            </Stack>
-          </Container>
+                <br/>
+                <br/>
+                If you want to learn more about our process and experiments with other models like LSTMs along the way, we highly recommend you to check out our Medium article! 
+              </Typography>
+            </Box>
+            <Box
+              maxWidth="md"
+              bgcolor="rgba(255, 255, 255, 0.5)"
+              sx={{ borderRadius: 3, p: 5, m: 5 }}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Typography
+                component="h4"
+                variant="h4"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                about us
+              </Typography>
+              <Box
+                component="img"
+                sx={{
+                  maxWidth: { xs: 450, md: 350 }, m:'auto'
+                }}
+                alt="Our team picture!"
+                src={teamPic}
+              />
+              <Typography
+                variant="h5"
+                align="center"
+                color="text.secondary"
+                paragraph
+              >
+                Hope you're enjoying our site :3 We're a group of students from
+                UC Berkeley who love tinkering with machine learning
+                applications. Lofi bytes is a semester long project that we
+                worked on through Launchpad, an organization here on campus.
+                <br />
+                <br/>
+                Project leader: Alicia Wang
+                <br />
+                Members: Alena Chao, Eric Liu, Zane Mogannam, Chloe Wong, Iris
+                Zhou
+                <br />
+                Advisors: Vincent Lim, Winston Liu
+              </Typography>
+            </Box>
+          </Stack>
         </Box>
-        {/* End hero unit */}
-        {/*<Container sx={{ py: 8 }} maxWidth="md">
-          
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card
-                  sx={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                  }}
-                >
-                  <CardMedia component="img" image={lofi1} alt="random" />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe
-                      the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-      </Container> */}
       </main>
 
       {/* Footer */}

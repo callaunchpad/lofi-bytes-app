@@ -28,13 +28,10 @@ cafePlayer.loop = true;
 firePlayer.loop = true;
 drumPlayer.loop = true;
 
-// const midi = await Midi.fromUrl(File);
-
 const Synth = (props) => {
   const File = props.file;
   const midi = new Midi(File);
   const synths = [];
-  //parseFile(File);
 
   const [play, setPlay] = useState(false);
   const [rainVolume, setRainVolume] = useState(-100);
@@ -54,14 +51,6 @@ const Synth = (props) => {
       cafePlayer.start();
       firePlayer.start();
       midi.tracks.forEach(track => {
-        // const synth = new Tone.PolySynth(Tone.Synth, {
-        //   envelope: {
-        //     attack: 0.05,
-        //     decay: 0.3,
-        //     sustain: 0.5,
-        //     release: 1,
-        //   },
-        // }).toDestination();
         const synth = new Tone.Sampler({
           urls: {
             A2: '/src/components/Synth/assets/client_assets_samples_instruments_piano-soft_A2.mp3',
@@ -87,7 +76,7 @@ const Synth = (props) => {
           );
         }, track.notes).start(midi.startTime);
       });
-      Tone.Transport.bpm.value = 40;
+      Tone.Transport.bpm.value = 60;
       Tone.Transport.start();
       Tone.Transport.loop = true;
       Tone.Transport.loopStart = 0;
@@ -175,13 +164,13 @@ const Synth = (props) => {
       </Stack>
       <div>
       {props.generating ?
-      <Typography variant="body1" color="white" align="center" style={{ fontSize: '40px'}}>
-        GENERATING...
+      <Typography variant="body1" color="white" align="center" style={{ fontSize: '20px'}}>
+        {props.generating}
       </Typography> 
         : 
       <></>
       }
-      {File!==null ? 
+      {File!==null && !props.generating ? 
       <Typography variant="body1" color="text.primary" align="center" style={{ fontSize: '40px'}}>
         <Button variant="contained"
           style={{ fontSize: '1.3rem'}}
