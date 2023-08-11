@@ -48,7 +48,7 @@ export default function Album() {
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
           <Typography style={{ marginLeft: 16 }} variant="h6" color="inherit" noWrap>
-          <Link href="/lofi-bytes-app/about" underline="none" color="inherit">about</Link>
+          <Link href="/about" underline="none" color="inherit">about</Link>
           </Typography>
           </Box>
         </Toolbar>

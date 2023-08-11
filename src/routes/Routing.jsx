@@ -8,7 +8,7 @@ function Routing() {
   return (
     <Routes>
       <Route path="*" element={<Home />} />
-      <Route path="/lofi-bytes-app/about" element={<About />} />
+      <Route path="/about" element={<About />} />
     </Routes>
   );
 }
