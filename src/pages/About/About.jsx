@@ -116,9 +116,8 @@ export default function Album() {
             <Box
               maxWidth="md"
               bgcolor="rgba(255, 255, 255, 0.5)"
-              sx={{ borderRadius: 3, p: 5, m: 5 }}
-              justifyContent="center"
-              alignItems="center"
+              sx={{ borderRadius: 3, p: 5, m: 5, alignContent: 'center', justifyContent: 'center', width: '100%' }}
+              alignContent='flex-start' alignItems='flex-start' justify='flex-start'
             >
               <Typography
                 component="h4"
@@ -129,7 +128,14 @@ export default function Album() {
               >
                 about us
               </Typography>
-              <Box
+              <Typography
+                component="h4"
+                variant="h4"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                <Box
                 component="img"
                 sx={{
                   maxWidth: { xs: 450, md: 350 }, m:'auto'
@@ -137,6 +143,7 @@ export default function Album() {
                 alt="Our team picture!"
                 src={teamPic}
               />
+              </Typography>
               <Typography
                 variant="h5"
                 align="center"
