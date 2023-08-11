@@ -8,6 +8,7 @@ import svgr from 'vite-plugin-svgr';
 export default defineConfig({
   assetsInclude: ['**/*.mid'],
   plugins: [react(), svgr(),], 
+  base: '/lofi-bytes-app/',
   build: {
     sourcemap: false,
   },
