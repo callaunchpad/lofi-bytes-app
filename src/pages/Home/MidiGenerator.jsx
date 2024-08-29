@@ -31,56 +31,63 @@ export default function MidiGenerator() {
     }
   };
 
-  const generateMIDI = async (midiFile) => {
-    window.console.log(midiFile);
+  const generateMIDI = async (midiFile, useRandom = false) => {
+    let inputMidi;
 
-    let response = null;
+    if (useRandom) {
+      setGenerating('GENERATING... will take a minute!');
+      try {
+        const response = await fetch(
+          'https://huggingface.co/spaces/Launchpad/lofi-bytes/resolve/main/uploaded_midis/ghibli_castle_in_the_sky.mid',
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const blob = await response.blob();
+        inputMidi = new File([blob], 'ghibli_castle_in_the_sky.mid', {
+          type: 'audio/midi',
+        });
+        window.console.log(inputMidi);
+      } catch (error) {
+        window.console.error('Error fetching random MIDI:', error);
+        setGenerating('Failed to fetch random MIDI.');
+        return;
+      }
+    } else {
+      inputMidi = midiFile;
+    }
+
     setGenerating('GENERATING... will take a minute!');
     // make a POST request to the Hugging Face Spaces API using the Gradio client
     try {
-      response = await client.predict('/predict', {
-        input_midi: midiFile,
+      const response = await client.predict('/predict', {
+        input_midi: inputMidi,
       });
       window.console.log(response);
+
+      const generatedMidiContent = await loadFile(response.data[0].url);
+      setFile(generatedMidiContent);
+      setGenerating('');
     } catch (error) {
       if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
         window.console.log(error.response.data);
         window.console.log(error.response.status);
       } else if (error.request) {
-        // The request was made but no response was received
         window.console.log(error.request);
       } else {
-        // Something happened in setting up the request that triggered an Error
         window.console.log('Error', error.message);
       }
-      setGenerating('Not a valid MIDI.');
-    }
-    if (response != null) {
-      loadFile(response.data[0].url)
-        .then((contents) => {
-          window.console.log('File contents:', contents);
-          setFile(contents);
-          setGenerating('');
-        })
-        .catch((error) => {
-          const data = JSON.parse(
-            new TextDecoder().decode(error.response.data),
-          );
-          setGenerating(data.message);
-        });
+      setGenerating('Error in MIDI generation.');
     }
   };
 
   const handlePreloadedMIDI = () => {
-    generateMIDI('');
+    generateMIDI(null, true); // Use random MIDI
   };
 
   const handleFileUpload = (event) => {
-    // get the selected file from the input
-    const file = event.target.files[0];
-    generateMIDI(file);
+    const uploadedFile = event.target.files[0];
+    generateMIDI(uploadedFile, false); // Use uploaded MIDI
   };
 
   return (
