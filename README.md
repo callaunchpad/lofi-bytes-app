@@ -12,26 +12,23 @@ Check out our website at https://callaunchpad.github.io/lofi-bytes-app/! This is
 
 ## About our repo
 
-This is the repo for our web app. 
+This is the repo for our web app.
 
 - Home Screen component contains the website skeleton: header, footer, margins, and background.
-- Midi Generator component contains the API connection: the user’s uploaded midi file is sent to the Flask API back-end. The transformer-generated output is sent back.
+- Midi Generator component contains the API connection: the user’s uploaded midi file is sent to the back-end API. The transformer-generated output is sent back.
 - Synth component contains ambient sound interaction: Users can adjust sliding bars to increase and decrease the loudness of drum beats, rain, cafe sounds, and fire.
 
-Our API code for our web app is located at https://github.com/callaunchpad/lofi-bytes-api.
+Our API code for our web app is located at ~https://github.com/callaunchpad/lofi-bytes-api.~
+
+**Edit (8/28/2024)**: we have deployed our model on [Hugging Face Spaces](https://huggingface.co/spaces/Launchpad/lofi-bytes) to reduce model serving costs!
 
 Built with TypeScript + React + Redux + MUI + RRD + ESLint + Prettier (from vite-mui-ts boilerplate)
-
-![viterjs-template](https://iili.io/yYpGaV.md.png)
 
 #### Clone the repo
 
 ```
-npx degit emre-cil/viterjs-template my-app
-```
-
-```
-cd my-app
+git@github.com:callaunchpad/lofi-bytes-app.git
+cd lofi-bytes-app
 ```
 
 #### Install Dependencies
