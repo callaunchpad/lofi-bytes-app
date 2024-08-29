@@ -6,8 +6,6 @@ import Synth from '@/components/Synth/Synth.jsx';
 import Typography from '@mui/material/Typography';
 import { Client } from '@gradio/client';
 
-const client = await Client.connect('Launchpad/lofi-bytes');
-
 export default function MidiGenerator() {
   // FileUploader handles file type, so techinically, no error should be thrown.
   const [file, setFile] = React.useState(null);
@@ -60,6 +58,7 @@ export default function MidiGenerator() {
     setGenerating('GENERATING... will take a minute!');
     // make a POST request to the Hugging Face Spaces API using the Gradio client
     try {
+      const client = await Client.connect('Launchpad/lofi-bytes');
       const response = await client.predict('/predict', {
         input_midi: inputMidi,
       });
