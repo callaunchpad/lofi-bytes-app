@@ -4,80 +4,122 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Synth from '@/components/Synth/Synth.jsx';
 import Typography from '@mui/material/Typography';
+import { Client } from '@gradio/client';
+
+const client = await Client.connect('Launchpad/lofi-bytes');
 
 export default function MidiGenerator() {
   // FileUploader handles file type, so techinically, no error should be thrown.
   const [file, setFile] = React.useState(null);
-  const [generating, setGenerating] = React.useState("");
+  const [generating, setGenerating] = React.useState('');
 
   const hiddenFileInput = React.useRef(null);
   const handleClick = (event) => {
     hiddenFileInput.current.click();
   };
 
-  const handlePreloadedMIDI = () => {
-    generateMIDI("");
+  const loadFile = async (filePath) => {
+    try {
+      const response = await fetch(filePath);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const fileContents = await response.arrayBuffer();
+      return fileContents;
+    } catch (error) {
+      window.console.error('There was a problem loading the file:', error);
+    }
   };
-  
+
+  const generateMIDI = async (midiFile) => {
+    window.console.log(midiFile);
+
+    let response = null;
+    setGenerating('GENERATING... will take a minute!');
+    // make a POST request to the Hugging Face Spaces API using the Gradio client
+    try {
+      response = await client.predict('/predict', {
+        input_midi: midiFile,
+      });
+      window.console.log(response);
+    } catch (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        window.console.log(error.response.data);
+        window.console.log(error.response.status);
+      } else if (error.request) {
+        // The request was made but no response was received
+        window.console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        window.console.log('Error', error.message);
+      }
+      setGenerating('Not a valid MIDI.');
+    }
+    if (response != null) {
+      loadFile(response.data[0].url)
+        .then((contents) => {
+          window.console.log('File contents:', contents);
+          setFile(contents);
+          setGenerating('');
+        })
+        .catch((error) => {
+          const data = JSON.parse(
+            new TextDecoder().decode(error.response.data),
+          );
+          setGenerating(data.message);
+        });
+    }
+  };
+
+  const handlePreloadedMIDI = () => {
+    generateMIDI('');
+  };
+
   const handleFileUpload = (event) => {
     // get the selected file from the input
     const file = event.target.files[0];
     generateMIDI(file);
   };
 
-  const generateMIDI = (midiFile) => {
-    var formData = new FormData();
-    console.log(midiFile);
-    formData.append('file', midiFile);
-    // If no file, then let API know we want to use a random primer
-    const use_random = midiFile ? "false" : "true";
-    formData.append('use_random', use_random);
-    // make a POST request to the File Upload API with the FormData object and Rapid API headers
-    setGenerating("GENERATING... will take a few seconds!");
-    axios
-      .post('http://latte.csua.berkeley.edu:8089/generate', formData, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'multipart/form-data',
-        },
-        responseType: 'arraybuffer',
-      })
-      .then((response) => {
-        // handle the response
-        setFile(response.data);
-        setGenerating("");
-      })
-      .catch((error) => {
-        // handle errors
-        const data = JSON.parse(new TextDecoder().decode(error.response.data));
-        setGenerating(data.message);
-      });
-  }
-
   return (
     <div>
       <Stack spacing={2} direction="row" justifyContent="center">
-        <Typography variant="body1" color="text.primary" style={{ fontSize: '20px'}}>
-        <Button variant="contained"
-          style={{ fontSize: '1.3rem'}}
-          onClick={handleClick}>
+        <Typography
+          variant="body1"
+          color="text.primary"
+          style={{ fontSize: '20px' }}
+        >
+          <Button
+            variant="contained"
+            style={{ fontSize: '1.3rem' }}
+            onClick={handleClick}
+          >
             upload .mid file
-        </Button>
-        <input 
-          type="file" 
-          ref={hiddenFileInput}
-          onChange={handleFileUpload}
-          style={{display:'none'}} />
+          </Button>
+          <input
+            type="file"
+            ref={hiddenFileInput}
+            onChange={handleFileUpload}
+            style={{ display: 'none' }}
+          />
         </Typography>
-        <Typography variant="body1" color="text.primary" style={{ fontSize: '20px'}}>
-        <Button variant="contained"
-          style={{ fontSize: '1.3rem'}}
-          onClick={handlePreloadedMIDI}>
+        <Typography
+          variant="body1"
+          color="text.primary"
+          style={{ fontSize: '20px' }}
+        >
+          <Button
+            variant="contained"
+            style={{ fontSize: '1.3rem' }}
+            onClick={handlePreloadedMIDI}
+          >
             use random .mid
-        </Button>
+          </Button>
         </Typography>
       </Stack>
-      <Synth file={file} generating={generating}/>
+      <Synth file={file} generating={generating} />
     </div>
   );
 }
